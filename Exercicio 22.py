@@ -16,16 +16,17 @@ def divisao(a,b):
     if b > 0:
         return a/b
 
-def potenciacao(a,b):
-    potencia = 1
+def potencia(a,b):
     if b == 0:
-        return potencia
+        return 1
     else:
-        potencia = multiplicacao(potencia,a)
-        b -= 1
-        potencia += potenciacao(a,b)
-        print(potencia)
-        return potencia
+        return (a * potencia(a, b-1))
+
+def fatorial(a):
+    if a == 0:
+        return 1
+    else:
+        return (a * fatorial(a-1))
     
 def calcular(opcao,a,b):
     switcher = {
@@ -33,10 +34,11 @@ def calcular(opcao,a,b):
         2: subtracao(a,b),
         3: multiplicacao(a,b),
         4: divisao(a,b),
-        5: potenciacao(a,b)
+        5: potencia(a,b),
+        6: {fatorial(a), fatorial (b)}
     }
     print (switcher.get(int(opcao), 'Número invalido'))
-potencia = 0
+
 opcao = menus.menu_numerico('Soma;Subtração (a-b);Multiplicação;Divisão (a/b , decimais);Potenciação (a^b);Fatorial de ambos;Inserir novos números;Sair')
 a = float(input('Digite o primeiro valor: '))
 b = float(input('Digite o segundo valor: '))
